@@ -28,10 +28,20 @@ async def get_todo(todo_id: str, response: Response) -> todos | str:
     return todo
 
 @app.post('/todos', status_code=201)
-async def create_todo(todo_body: TodoBody):
+async def create_todo(todo_body: TodoBody) -> todos:
     todo = todos(**todo_body.model_dump())
     await todo.insert()
     return todo
+
+@app.patch('/todos/{todo_id}', status_code=200)
+async def edit_todo(todo_id: str,todo_body : TodoBody) -> str:
+    todo = await todos.get(todo_id)
+    todo.title = todo_body.title
+    todo.description = todo_body.description
+    todo.complete = todo_body.complete
+    
+    await todo.save()
+    return "OK"
 
 
 
