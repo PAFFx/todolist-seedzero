@@ -1,6 +1,6 @@
 from beanie import Document
 
-class todo_doc(Document):
+class Todo_doc(Document):
     title: str
     description: str = ""
     complete: bool = False
