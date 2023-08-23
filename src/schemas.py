@@ -5,7 +5,5 @@ class Todo(BaseModel):
     description: str = ""
     complete: bool = False
 
-class Todos(BaseModel):
-    todos: list[Todo]
 
     
