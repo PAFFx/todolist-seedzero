@@ -8,9 +8,9 @@ from .model import Todo
 app = FastAPI()
 
 @app.on_event("startup")
-async def init_db():
+async def on_startup():
     client = AsyncIOMotorClient("mongodb://root:rootpassword@localhost:27017")
-    await init_beanie(database=client.todos)
+    await init_beanie(database=client.todos, document_models=[Todo])
 
 
 
@@ -26,4 +26,5 @@ async def get_todo(todo_id: str, response: Response) -> Todo | str:
         response.status_code = 404
         return "Not Found"
     return todo
+
 
