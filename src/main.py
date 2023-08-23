@@ -43,5 +43,11 @@ async def edit_todo(todo_id: str,todo_body : TodoBody) -> str:
     await todo.save()
     return "OK"
 
+@app.delete('/todos/{todo_id}', status_code=200)
+async def delete_todo(todo_id: str) -> str:
+    todo = await todos.get(todo_id)
+    await todo.delete()
+    return "OK"
+
 
 
