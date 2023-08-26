@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Response, responses
+from fastapi import FastAPI, Response
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
 

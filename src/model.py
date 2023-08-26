@@ -1,7 +1,8 @@
+from typing import Optional
 from beanie import Document
 
 class todos(Document):
-    title: str
-    description: str = ""
-    complete: bool = False
+    title: str | None = None
+    description: str| None = None
+    complete: bool| None = None
 
