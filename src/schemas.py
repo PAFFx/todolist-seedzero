@@ -1,9 +1,10 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class TodoBody(BaseModel):
-    title: str
-    description: str = ""
-    complete: bool = False
+    title: Optional[str]
+    description: Optional[str]
+    complete: Optional[bool]
 
 
     
